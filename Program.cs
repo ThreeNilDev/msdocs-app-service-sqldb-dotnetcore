@@ -12,10 +12,10 @@ if(builder.Environment.IsDevelopment())
 else
 {
     builder.Services.AddDbContext<MyDatabaseContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("@Microsoft.KeyVault(SecretUri=https://msdocscoresqldatasymkeys.vault.azure.net/secrets/azure-sql-connectionstring-cdc44/ca6ecdc4527d4493a2626c9e6b5ad82e)")));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
     builder.Services.AddStackExchangeRedisCache(options =>
     {
-    options.Configuration = builder.Configuration["https://msdocscoresqldatasymkeys.vault.azure.net/secrets/azure-redis-connectionstring-6ce65/503b6126ce9049dc9dc284a241709399"];
+    options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
     options.InstanceName = "SampleInstance";
     });
 }
